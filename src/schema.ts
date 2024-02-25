@@ -7,7 +7,7 @@ import {
 } from "graphql";
 import { root } from "./resolvers";
 
-const { getPets } = root;
+const { getPets, getPet } = root;
 
 const PetType = new GraphQLObjectType({
   name: "pet",
@@ -26,6 +26,13 @@ const QueryType = new GraphQLObjectType({
       type: new GraphQLList(PetType),
       resolve: () => getPets()
     },
+    pet: {
+      type: PetType,
+      args: {
+        id: { type: GraphQLString }
+      },
+      resolve: (parent, args) => getPet(args)
+    }
   }
 });
 
