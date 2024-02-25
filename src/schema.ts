@@ -7,7 +7,7 @@ import {
 } from "graphql";
 import { root } from "./resolvers";
 
-const { getPets, getPet, createPet } = root;
+const { getPets, getPet, createPet, updatePet, deletePet } = root;
 
 const PetType = new GraphQLObjectType({
   name: "pet",
@@ -47,6 +47,23 @@ const mutationType = new GraphQLObjectType({
         ownerName: { type: GraphQLString }
       },
       resolve: (parent, args) => createPet(args)
+    },
+    update: {
+      type: PetType,
+      args: {
+        id: { type: GraphQLString },
+        name: { type: GraphQLString },
+        age: { type: GraphQLInt },
+        ownerName: { type: GraphQLString }
+      },
+      resolve: (parent, args) => updatePet(args)
+    },
+    delete: {
+      type: GraphQLString,
+      args: {
+        id: { type: GraphQLString }
+      },
+      resolve: (parent, args) => deletePet(args)
     }
   }
 });
