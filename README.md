@@ -7,7 +7,7 @@ This is a sample project to demonstrate how to use GraphQL with Express and Type
 Clone the repository
 
 ```bash
-git clone https://github.com/Guilherme-07062002/socket.io-sample.git
+git clone https://github.com/Guilherme-07062002/graphql-sample.git
 ```
 
 Install the dependencies
